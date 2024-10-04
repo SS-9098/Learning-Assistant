@@ -1,17 +1,17 @@
 from fastapi import FastAPI
-
+from utils import recognize_speech_from_mic
 
 app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"message": "Hello, welcome to the Voice Assistant!"}
+    return {"message": "Welcome to the Voice Assistant"}
 
-@app.post("/query/")
-async def process_query(user_input: str):
-    # Process the input and call your APIs here
-    response = f"Processing your input: {user_input}"
-    return {"response": response}
+@app.post("/speech-to-text/")
+async def process_speech():
+    # Recognize speech from the microphone
+    recognized_text = recognize_speech_from_mic()
+    return {"recognized_text": recognized_text}
 
 if __name__ == "__main__":
     import uvicorn
