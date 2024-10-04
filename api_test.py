@@ -1,4 +1,5 @@
 import requests  # Importing the requests library to make HTTP requests
+import utils
 
 # Define the URL for the API endpoint you’re using
 url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
@@ -9,10 +10,13 @@ headers = {
     "Content-Type": "application/json"  # Specifies that we're sending JSON data
 }
 
+ques = utils.getSpeech()
+print(f"{ques}\n")
+
 # Define the query or message you want to send
 payload = {
     "messages": [
-        {"role": "user", "content": "Explain Bayes Theorem"}  # Message asking a question
+        {"role": "user", "content": ques}  # Message asking a question
     ],
     "model": "gpt-4",          # Specifies the model type
     "max_completion_tokens": 100,          # Controls the length of the response
