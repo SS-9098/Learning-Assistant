@@ -13,6 +13,7 @@ headers = {
 ques = utils.getSpeech()
 print(f"{ques}\n")
 
+
 # Define the query or message you want to send
 payload = {
     "messages": [
@@ -20,7 +21,9 @@ payload = {
     ],
     "model": "gpt-4",          # Specifies the model type
     "max_completion_tokens": 100,          # Controls the length of the response
-    "temperature": 0.5          # Controls creativity in responses (higher is more creative)
+    "temperature": 0.5,# Controls creativity in responses (higher is more creative)
+    "name": "Study Buddy",
+    "instructions": "You are a personal assistant named Study Buddy who helps students with their education"
 }
 
 # Send the request to the API
