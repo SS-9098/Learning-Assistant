@@ -12,7 +12,7 @@ headers = {
 # Define the query or message you want to send
 payload = {
     "messages": [
-        {"role": "user", "content": "Which websites to study probablity from?"}  # Message asking a question
+        {"role": "user", "content": "Explain Bayes Theorem"}  # Message asking a question
     ],
     "model": "gpt-4",          # Specifies the model type
     "max_completion_tokens": 100,          # Controls the length of the response
