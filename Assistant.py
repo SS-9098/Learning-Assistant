@@ -1,5 +1,5 @@
 import requests  # Importing the requests library to make HTTP requests
-import utils
+import Voice
 
 # Define the URL for the API endpoint you’re using
 url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
@@ -10,7 +10,7 @@ headers = {
     "Content-Type": "application/json"  # Specifies that we're sending JSON data
 }
 
-ques = utils.getSpeech()
+ques = Voice.getSpeech().capitalize()+"?"
 print(f"{ques}\n")
 
 
