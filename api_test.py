@@ -12,11 +12,11 @@ headers = {
 # Define the query or message you want to send
 payload = {
     "messages": [
-        {"role": "user", "content": "What is the difference between Python and Java? Also provide code examples for both languages."}  # Message asking a question
+        {"role": "user", "content": "Which websites to study probablity from?"}  # Message asking a question
     ],
     "model": "gpt-4",          # Specifies the model type
-    "max_tokens": 100,          # Controls the length of the response
-    "temperature": 0.9          # Controls creativity in responses (higher is more creative)
+    "max_completion_tokens": 100,          # Controls the length of the response
+    "temperature": 0.5          # Controls creativity in responses (higher is more creative)
 }
 
 # Send the request to the API
