@@ -135,6 +135,8 @@ body {
 .output {
     width: 80%;
     background-color: #2e2e2e;
+    color: darkgray;
+    font-size: 20px;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -169,6 +171,7 @@ body {
 .answer {
     height: 1700px;
     width: 80%;
+    color: gray;
     padding: 10px;
     padding-top: 20px;
     background-color: #2e2e2e;
