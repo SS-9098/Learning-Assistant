@@ -12,9 +12,27 @@ document.getElementById("submit-btn").addEventListener("click", function() {
 
 // Voice button - For demo, it will print "Listening..."
 document.getElementById("voice-btn").addEventListener("click", function() {
-    document.getElementById("output").innerText = "Listening...";
+
     
     // You can integrate a speech recognition API here (like Web Speech API)
+    fetch("http://127.0.0.1:5000/voice", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        .then(document.getElementById("output").innerText = "Listening...")
+        .then(response => response.json())
+        .then(data => {
+            if (data.speech) {
+                // Display the answer in the output area
+                document.getElementById("output").innerText = "";
+                document.getElementById("input").value = data.speech;
+            } else if (data.error) {
+                // Display an error message if the backend returns an error
+                document.getElementById("output").innerText = "Error: " + data.error;
+            }
+        })
 });
 
 // Enable Speech-to-Text with double-tab press
@@ -56,13 +74,15 @@ document.getElementById("submit-btn").addEventListener("click", function () {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ question: question })
+            body: JSON.stringify({ question: question + "within 100 words" })
         })
         .then(response => response.json())
         .then(data => {
             if (data.answer) {
                 // Display the answer in the output area
                 document.getElementById("answer").innerText = data.answer;
+                document.getElementById("output").innerText = question;
+                document.getElementById("input").value = "";
             } else if (data.error) {
                 // Display an error message if the backend returns an error
                 document.getElementById("answer").innerText = "Error: " + data.error;
@@ -76,42 +96,6 @@ document.getElementById("submit-btn").addEventListener("click", function () {
 });
 
 // Check if the browser supports speech recognition
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-// Create a new speech recognition object once when the script runs
-let recognition;
-
-if ('SpeechRecognition' in window) {
-    recognition = new window.SpeechRecognition();
-    recognition.continuous = true;  // Keep listening even after speech is recognized
-    recognition.interimResults = false; // Get only final results
-    recognition.lang = 'en-US'; // Set the language for recognition
-
-    // When recognition starts
-    recognition.onstart = function() {
-        document.getElementById("output").innerText = "Listening...";
-    };
-
-    // When speech is recognized
-    recognition.onresult = function(event) {
-        const speechResult = event.results[0][0].transcript;
-        document.getElementById("input").value = speechResult; // Display recognized speech in the input field
-        document.getElementById("output").innerText = "You said: " + speechResult;
-    };
-
-    // Handle recognition errors
-    recognition.onerror = function(event) {
-        document.getElementById("output").innerText = "Error: " + event.error;
-    };
-
-    // When recognition ends
-    recognition.onend = function() {
-        document.getElementById("output").innerText = "Speech recognition stopped.";
-    };
-
-} else {
-    document.getElementById("output").innerText = "Speech recognition is not supported in this browser.";
-}
 
 // Add event listener for the voice button
 document.getElementById("voice-btn").addEventListener("click", function () {

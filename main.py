@@ -44,6 +44,10 @@ def ask_question():
     else:
         return jsonify({"error": "No question provided"}), 400
 
+@app.route('/voice', methods=['POST'])
+def voice():
+    result = Voice.getSpeech().capitalize() + '?'
+    return jsonify({'speech': result})
 
 if __name__ == "__main__":
     app.run(debug=True)
