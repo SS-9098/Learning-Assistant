@@ -27,7 +27,8 @@ A voice-activated virtual assistant designed to help students with their homewor
 ## Resources
 - **OpenAI API**: [Cheapest GPT-4 Turbo API](https://rapidapi.com/NextAPI/api/cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api)
 
-## Project Structure
+## Video Link
+- **Drive Link**: https://drive.google.com/file/d/1a56NvAJRJ5Hl-Gbv2ryfCwS5VBa6oLXL/view?usp=drivesdk
 
 
 
