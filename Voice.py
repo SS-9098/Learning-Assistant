@@ -6,7 +6,7 @@ def getSpeech():
        r = sr.Recognizer()
        with sr.Microphone() as source:
         print("Say something!")
-        audio = r.listen(source, 10, 10)
+        audio = r.listen(source, 5, 5)
         print ("Processing...")
 
        try:   # using google speech recognition

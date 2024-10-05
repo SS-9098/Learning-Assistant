@@ -6,12 +6,13 @@ url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidap
 
 # Set up the headers, including your API key for authentication
 headers = {
-    "X-RapidAPI-Key": "2c791c4302msh188fc620d2fccf4p1a4445jsn40de27192e13",  # This is your unique API key
+    "X-RapidAPI-Key": "7a86d10ba8mshac6a9d30c345183p1be452jsne2f259ea0591",  # This is your unique API key
     "Content-Type": "application/json"  # Specifies that we're sending JSON data
 }
 
 ques = Voice.getSpeech().capitalize()+"?"
 print(f"{ques}\n")
+ques = ques + " in 70 words or less"
 
 
 # Define the query or message you want to send

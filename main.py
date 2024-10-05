@@ -10,7 +10,7 @@ CORS(app)
 # Define the URL and headers for GPT-4 API
 url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
 headers = {
-    "X-RapidAPI-Key": "2c791c4302msh188fc620d2fccf4p1a4445jsn40de27192e13",  # Replace with your actual API key
+    "X-RapidAPI-Key": "7a86d10ba8mshac6a9d30c345183p1be452jsne2f259ea0591",  # Replace with your actual API key
     "Content-Type": "application/json"
 }
 
@@ -39,6 +39,7 @@ def ask_question():
             cleaned_answer = answer.replace("**", "").replace("```", "").strip()
             return jsonify({"answer": cleaned_answer}), 200
         else:
+            print(response.text)
             return jsonify({"error": "API error", "details": response.text}), response.status_code
     else:
         return jsonify({"error": "No question provided"}), 400
