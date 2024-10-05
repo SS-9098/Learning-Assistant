@@ -113,6 +113,7 @@ body {
     align-items: center;
     position: relative;
     padding: 20px;
+    padding-bottom: 0px;
 }
 
 /* Voice button */
@@ -164,12 +165,12 @@ body {
 }
 
 .answer {
+    height: 1700px;
     width: 80%;
     background-color: #2e2e2e;
-    padding: 20px;
     border-radius: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 3px;
+    margin-bottom: 0px;
     min-height: 100px;
     display: flex;
     justify-content: center;
