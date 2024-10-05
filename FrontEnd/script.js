@@ -63,6 +63,7 @@ document.getElementById("new-conversation").addEventListener("click", function()
     document.getElementById("output").innerText = "";
     document.getElementById("answer").innerText = "";
     document.getElementById("input").value = "";
+    document.getElementById("link").innerText = "";
 });
 
 // Continue learning logic

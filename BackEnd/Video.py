@@ -4,7 +4,7 @@ from googleapiclient.discovery import build
 API_KEY = 'AIzaSyDBqKo5s-m3S0sOmiZGKUM6Adb2Cy46WH0'
 
 
-def youtube_search(query, max_results=1):
+def youtube_search(query, max_results=5):
     # Build a resource object for interacting with the YouTube API
     youtube = build('youtube', 'v3', developerKey=API_KEY)
 
@@ -13,6 +13,7 @@ def youtube_search(query, max_results=1):
         q=query,
         part='snippet',
         type='video',  # Only return video results
+        order='relevance',
         maxResults=max_results
     )
     response = request.execute()
