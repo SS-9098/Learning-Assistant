@@ -4,12 +4,19 @@ document.getElementById("submit-btn").addEventListener("click", function() {
     if (question) {
         // Display the user's question in the output area (for demo purposes)
         document.getElementById("output").innerText = "Processing: " + question;
-
+        document.getElementById("history-2").innerText = document.getElementById("history-1").innerText
+        document.getElementById("history-1").innerText = question
         // Here you would normally send the question to the API, e.g., using fetch or axios
         // Then display the API response in the output area.
     }
 });
 
+document.getElementById("history-1").addEventListener("click", function() {
+    document.getElementById("input").value = document.getElementById("history-1").innerText;
+});
+document.getElementById("history-2").addEventListener("click", function() {
+    document.getElementById("input").value = document.getElementById("history-2").innerText;
+});
 // Voice button - For demo, it will print "Listening..."
 document.getElementById("voice-btn").addEventListener("click", function() {
 
@@ -53,7 +60,8 @@ document.addEventListener("keydown", function(event) {
 
 // New conversation button logic
 document.getElementById("new-conversation").addEventListener("click", function() {
-    document.getElementById("output").innerText = "Starting a new conversation...";
+    document.getElementById("output").innerText = "";
+    document.getElementById("answer").innerText = "";
     document.getElementById("input").value = "";
 });
 
