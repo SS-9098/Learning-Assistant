@@ -100,6 +100,30 @@ document.getElementById("submit-btn").addEventListener("click", function () {
             // Handle any network errors
             document.getElementById("output").innerText = "Error: " + error.message;
         });
+
+        //Get video link and name
+        fetch("http://127.0.0.1:5000/video", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ question: question })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.name) {
+                // Display the answer in the output area
+                document.getElementById("link").innerText = " " + data.name;
+                document.getElementById("link").href = data.link;
+            } else if (data.error) {
+                // Display an error message if the backend returns an error
+                document.getElementById("video").innerText = "Error: " + data.error;
+            }
+        })
+        .catch(error => {
+            // Handle any network errors
+            document.getElementById("output").innerText = "Error: " + error.message;
+        });
     }
 });
 

@@ -3,6 +3,7 @@ from flask_cors import CORS
 
 import requests
 import Voice
+import Video
 
 app = Flask(__name__)
 CORS(app)
@@ -48,6 +49,11 @@ def ask_question():
 def voice():
     result = Voice.getSpeech().capitalize() + '?'
     return jsonify({'speech': result})
+@app.route('/video', methods=['POST'])
+def video():
+    data = request.json
+    result = Video.youtube_search(data)
+    return jsonify({'name': result[0], 'link': result[1]})
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -21,7 +21,7 @@ payload = {
         {"role": "user", "content": ques}  # Message asking a question
     ],
     "model": "gpt-4",          # Specifies the model type
-    "max_completion_tokens": 100,          # Controls the length of the response
+    "max_completion_tokens": 50,          # Controls the length of the response
     "temperature": 0.5,# Controls creativity in responses (higher is more creative)
     "name": "Study Buddy",
     "instructions": "You are a personal assistant named Study Buddy who helps students with their education"
