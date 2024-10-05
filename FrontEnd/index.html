@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBuddy - Voice Activated Learning Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top bar with website name and profile button -->
+    <div class="top-bar">
+        <div class="logo">StudyBuddy</div>
+        <div class="profile-btn">
+            <img src="profile-icon.png" alt="Profile" id="profile-icon">
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar with dropdowns and new buttons -->
+        <div class="sidebar">
+            <div class="dropdown">
+                <button class="dropbtn">Previously Asked Questions</button>
+                <div class="dropdown-content" id="previous-questions">
+                    <!-- Add previously asked questions here -->
+                    <a href="#">What is Pythagoras Theorem?</a>
+                    <a href="#">Difference between Python and Java?</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Suggested Topics</button>
+                <div class="dropdown-content" id="suggested-topics">
+                    <!-- Add suggested topics here -->
+                    <a href="#">Introduction to Algebra</a>
+                    <a href="#">Newton's Laws of Motion</a>
+                </div>
+            </div>
+
+            <!-- Buttons at the bottom of the sidebar -->
+            <div class="sidebar-bottom">
+                <button class="sidebar-btn" id="continue-learning">Continue Learning</button>
+                <button class="sidebar-btn" id="new-conversation">New Conversation</button>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <div class="main">
+            <!-- Voice button -->
+            <button class="voice-btn" id="voice-btn">🎤 Speak</button>
+
+            <!-- Output area (Answer display) -->
+            <div id="output" class="output">
+                <!-- The answer will be displayed here -->
+            </div>
+            <!-- Input bar for typing questions -->
+            <div class="input-area">
+                <input type="text" id="input" placeholder="Type your question..." autofocus>
+                <button id="submit-btn">Send</button>
+            </div>
+	    <div id="answer" class="output">
+                <!-- The answer will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
