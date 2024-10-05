@@ -114,12 +114,13 @@ body {
     position: relative;
     padding: 20px;
     padding-bottom: 0px;
+    padding-top: 0px;
 }
 
 /* Voice button */
 .voice-btn {
     position: absolute;
-    top: 25px;
+    top: 10px;
     background-color: #4caf50;
     color: #fff;
     border: none;
@@ -137,6 +138,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
+    margin-top: 30px;
     min-height: 150px;
     display: flex;
     justify-content: center;
@@ -168,6 +170,7 @@ body {
     height: 1700px;
     width: 80%;
     padding: 10px;
+    padding-top: 20px;
     background-color: #2e2e2e;
     border-radius: 10px;
     margin-top: 3px;
@@ -175,8 +178,9 @@ body {
     min-height: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: top;
+    font-size: 18px;
+    text-align: top;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
