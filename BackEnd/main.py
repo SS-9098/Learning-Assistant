@@ -11,7 +11,7 @@ CORS(app)
 # Define the URL and headers for GPT-4 API
 url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
 headers = {
-    "X-RapidAPI-Key": "7a86d10ba8mshac6a9d30c345183p1be452jsne2f259ea0591",  # Replace with your actual API key
+    "X-RapidAPI-Key": "4c7c959ed8msh9ce6b3a18b16faap1deb54jsn33aa8f0eb27e",  # Replace with your actual API key
     "Content-Type": "application/json"
 }
 

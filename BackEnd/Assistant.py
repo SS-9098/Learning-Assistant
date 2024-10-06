@@ -6,7 +6,7 @@ url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidap
 
 # Set up the headers, including your API key for authentication
 headers = {
-    "X-RapidAPI-Key": "7a86d10ba8mshac6a9d30c345183p1be452jsne2f259ea0591",  # This is your unique API key
+    "X-RapidAPI-Key": "4c7c959ed8msh9ce6b3a18b16faap1deb54jsn33aa8f0eb27e",  # This is your unique API key
     "Content-Type": "application/json"  # Specifies that we're sending JSON data
 }
 
