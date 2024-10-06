@@ -48,10 +48,10 @@ def interest_checker(result, user_name):
         # Access the 'interest' column value
         print(interest_value)
         if result['field'].lower() == interest_value.lower():
-            return "Found your interest"
+            return result['field']
 
     # If no match is found
-    return "Not your interest, do you want to add it?"
+    return result['field']+"is not your interest, do you want to add it?"
 
 # Route to get user details and check interests
 @app.route('/get_user_details', methods=['POST'])
@@ -71,21 +71,13 @@ def get_user_details():
     user_id = user['id']
 
     # Fetch field-related data (assuming you import ref_data which contains field-related keywords)
-    result = classify_text_rule_based(question, ref_data.field_keywords)
-    if result['field'] != "Unknown":
-        # Check user interests based on the result field
-        interest_response = interest_checker(result, user_name)
-        print(interest_response)
-    else:
-        interest_response=None
-        print("field not found")
+
     # Prepare the user details to send back
     user_details = {
         "id": user['id'],
         "name": user['name'],
         "pq1": user['pq1'],
-        "pq2": user['pq2'],
-        "interests_check": interest_response  # Interest check result
+        "pq2": user['pq2'] # Interest check result
     }
 
     conn.close()
@@ -157,6 +149,24 @@ def ask_question():
     else:
         return jsonify({"error": "No question provided"}), 400
 
+@app.route('/classify', methods=['POST'])
+def input_classifier():
+    data = request.json
+    question = data.get("question", "")
+    user_name = data.get("name") # Get the user's name from the frontend
+
+    # Use rule-based classification for the question
+    classified_result = classify_text_rule_based(question, ref_data.field_keywords)
+
+    if classified_result['field'] != "Unknown":
+        # Check user interests based on the classified result
+        interest_response = interest_checker(classified_result, user_name)
+        print(interest_response)
+        return jsonify({"interestResponse": interest_response }), 200
+
+    return jsonify({"error": "Could not classify the input or find related interests."}), 200
+
+        # interest_response = None
 
 @app.route('/voice', methods=['POST'])
 def voice():

@@ -4,7 +4,35 @@ document.getElementById("submit-btn").addEventListener("click", function() {
     let question = document.getElementById("input").value;
     if (question) {
         // Display the user's question in the output area (for demo purposes)
-        document.getElementById("output").innerText = "Processing: " + question;
+        "this is to classify data"
+//document.getElementById("output").innerText = "Processing: " + question;
+
+    // Fetch request to classify the user's input and check interests
+    fetch("http://127.0.0.1:5000/classify", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            question: question,  // Send the input question
+            name: "Shlok Mishra"  // Send the user name to the backend
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.interestResponse) {
+            // Display the interest response from the backend
+            document.getElementById("interest").innerText = data.interestResponse;
+        } else if (data.error) {
+            // Display an error message if the backend returns an error
+            document.getElementById("output").innerText = "Error: " + data.error;
+        }
+    })
+    .catch(error => {
+        // Handle any network errors
+        document.getElementById("output").innerText = "Error: " + error.message;
+    });
+
         if(CurPro != "default"){
             fetch("http://127.0.0.1:5000/pq_update", {
                 method: "POST",
