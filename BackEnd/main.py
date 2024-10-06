@@ -4,8 +4,9 @@ import sqlite3
 import requests
 import Voice
 import Video
+import ref_data
 from Search import search_query  # Importing the search_query function from Search.py
-from sqlitin import pqUpd
+# from sqlitin import pqUpd
 
 app = Flask(__name__)
 CORS(app)
@@ -15,31 +16,81 @@ CORS(app)
 # SQLite connection
 def get_db_connection():
     conn = sqlite3.connect('Student_db.db')
-    conn.row_factory = sqlite3.Row
+    conn.row_factory = sqlite3.Row  # This allows you to access row values by column names
     return conn
 
+# Rule-based classification function
+def classify_text_rule_based(user_input, field_keywords):
+    user_input = user_input.lower()
+
+    # Iterate over each field in the dictionary
+    for field, subjects in field_keywords.items():
+        for subject, keywords in subjects.items():
+            if any(keyword in user_input for keyword in keywords):
+                return {"field": field, "subject": subject}
+
+    return {"field": "Unknown", "subject": "Unknown"}
+
+# Interest checker function
+def interest_checker(result, user_name):
+    conn = get_db_connection()
+
+    # Query for the user's interests
+    user_interests = conn.execute("SELECT interest FROM student_interest WHERE lower(name) = lower(?)",
+                                  (user_name.lower(),)).fetchall()
+
+    conn.close()
+
+    # Loop through the interests and match against the result field
+    for row in user_interests:
+        interest_value = row['interest']
+        print(result['field'])
+        # Access the 'interest' column value
+        print(interest_value)
+        if result['field'].lower() == interest_value.lower():
+            return "Found your interest"
+
+    # If no match is found
+    return "Not your interest, do you want to add it?"
+
+# Route to get user details and check interests
 @app.route('/get_user_details', methods=['POST'])
 def get_user_details():
     data = request.get_json()
     user_name = data.get("name").strip()  # Strip any whitespace
+    question = data.get("question", "").strip()  # Get the question from the frontend
 
     conn = get_db_connection()
 
-    # Check with case insensitivity
-    user = conn.execute("SELECT * FROM students WHERE lower(name) = lower(?)", (user_name,)).fetchone()
-    conn.close()
+    # Fetch user details
+    user = conn.execute("SELECT * FROM students WHERE lower(name) = lower(?)", (user_name.lower(),)).fetchone()
+
     if user is None:
-        print("uiyhi")
         return jsonify({"error": "User not found"}), 404
 
+    user_id = user['id']
+
+    # Fetch field-related data (assuming you import ref_data which contains field-related keywords)
+    result = classify_text_rule_based(question, ref_data.field_keywords)
+    if result['field'] != "Unknown":
+        # Check user interests based on the result field
+        interest_response = interest_checker(result, user_name)
+        print(interest_response)
+    else:
+        interest_response=None
+        print("field not found")
+    # Prepare the user details to send back
     user_details = {
-        "id": user[0],
-        "name": user[1],
-        "pq1": user[2],
-        "pq2": user[3],
+        "id": user['id'],
+        "name": user['name'],
+        "pq1": user['pq1'],
+        "pq2": user['pq2'],
+        "interests_check": interest_response  # Interest check result
     }
 
+    conn.close()
     return jsonify(user_details), 200
+
 
 
 @app.route('/pq_update', methods=['POST'])

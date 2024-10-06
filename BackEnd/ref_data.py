@@ -1,5 +1,6 @@
 field_keywords = {"Mathematics":  {
     "Calculus": [
+        "calculus","maths","mathematics",
         "chain rule",
         "curl",
         "definite integral",
@@ -127,7 +128,7 @@ field_keywords = {"Mathematics":  {
     ]
 }
 ,"Computer Science Engineering": {
-        "Data Structures & Algorithms": [
+        "data structures and algorithms": [
             "binary tree", "hash table", "graph traversal", "depth-first search",
             "breadth-first search", "dynamic programming", "greedy algorithm",
             "binary search", "linked list", "stack", "queue", "heap", "trie",

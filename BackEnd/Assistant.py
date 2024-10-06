@@ -2,6 +2,7 @@
 import requests  # Importing the requests library to make HTTP requests
 import Voice
 import ref_data
+import sqlite3
 
 # Define the URL for the API endpoint you’re using
 url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
@@ -20,6 +21,55 @@ else:
     quit()
 print(f"{ques}\n")
 ques = ques + " in 70 words or less"
+
+
+def classify_text_rule_based(user_input, field_keywords):
+    # Convert user input to lowercase for case-insensitive matching
+    user_input = user_input.lower()
+
+    # Iterate over each field in the dictionary
+    for field, subjects in field_keywords.items():
+        # Iterate over each subject within the field
+        for subject, keywords in subjects.items():
+            # Check if any keyword for the current subject is in the user input
+            if any(keyword in user_input for keyword in keywords):
+                return {"field": field, "subject": subject}
+
+    # If no match found, return unknown
+    return {"field": "Unknown", "subject": "Unknown"}
+user_input=ques
+result = classify_text_rule_based(user_input, ref_data.field_keywords)
+print(result)
+
+
+def get_db_connection():
+    conn = sqlite3.connect('Student_db.db')
+    conn.row_factory = sqlite3.Row  # This allows you to access row values by column names
+    return conn
+
+
+if result['field'] != "Unknown":
+    def interest_checker(result):
+        conn = get_db_connection()
+        user_name = "Shlok Mishra"
+
+        # Query for interests of the user
+        shlok_interest = conn.execute("SELECT interest FROM student_interest WHERE lower(name) = lower(?)",
+                                      (user_name,))
+
+        # Loop through the interests and print them
+        for row in shlok_interest:
+            interest_value = row['interest']  # Access the 'interest' column value
+            print(f"Interest: {interest_value}")  # Print each interest
+
+            # Check if the result field matches the current interest
+            if result['field'] == interest_value:
+                return "Found your interest"
+
+        return "Not your interest, do you want to add it?"
+
+
+    print(interest_checker(result))
 
 # Define the query or message you want to send
 payload = {
