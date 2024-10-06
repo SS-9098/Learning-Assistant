@@ -1,5 +1,7 @@
+# this file is just for Backend testing
 import requests  # Importing the requests library to make HTTP requests
 import Voice
+import ref_data
 
 # Define the URL for the API endpoint you’re using
 url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
@@ -10,10 +12,14 @@ headers = {
     "Content-Type": "application/json"  # Specifies that we're sending JSON data
 }
 
-ques = Voice.getSpeech().capitalize()+"?"
+q = Voice.getSpeech()
+if q:
+    ques=q.capitalize()+"?"
+else:
+    # print("Sorry,Couldn't hear")
+    quit()
 print(f"{ques}\n")
 ques = ques + " in 70 words or less"
-
 
 # Define the query or message you want to send
 payload = {

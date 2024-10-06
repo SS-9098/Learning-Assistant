@@ -1,12 +1,73 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import sqlite3
 import requests
 import Voice
 import Video
 from Search import search_query  # Importing the search_query function from Search.py
+from sqlitin import pqUpd
 
 app = Flask(__name__)
 CORS(app)
+
+# app = Flask(__name__)
+
+# SQLite connection
+def get_db_connection():
+    conn = sqlite3.connect('Student_db.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+@app.route('/get_user_details', methods=['POST'])
+def get_user_details():
+    data = request.get_json()
+    user_name = data.get("name").strip()  # Strip any whitespace
+
+    conn = get_db_connection()
+
+    # Check with case insensitivity
+    user = conn.execute("SELECT * FROM students WHERE lower(name) = lower(?)", (user_name,)).fetchone()
+    conn.close()
+    if user is None:
+        print("uiyhi")
+        return jsonify({"error": "User not found"}), 404
+
+    user_details = {
+        "id": user[0],
+        "name": user[1],
+        "pq1": user[2],
+        "pq2": user[3],
+    }
+
+    return jsonify(user_details), 200
+
+
+@app.route('/pq_update', methods=['POST'])
+def upd():
+    data = request.get_json()
+    user_name = data.get("name").strip()
+    conn = get_db_connection()
+
+    # Check with case insensitivity
+    user = conn.execute("SELECT * FROM students WHERE lower(name) = lower(?)", (user_name,)).fetchone()
+
+    if user is None:
+        print("uiyhi")
+        return jsonify({"error": "User not found"}), 404
+
+    user_details = {
+        "id": user[0],
+        "name": user[1],
+        "pq1": user[2],
+        "pq2": user[3],
+    }
+
+    question = data.get("ques")
+    conn.execute(f'Update students set pq2="{user[2]}" where id={user[0]}')
+    conn.execute(f'Update students set pq1="{question}" where id={user[0]}')
+    conn.commit()
+    conn.close()
+    return jsonify(user_details), 200
 
 # Define the URL and headers for GPT-4 API
 url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"

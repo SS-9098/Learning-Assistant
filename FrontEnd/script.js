@@ -1,13 +1,36 @@
 // Handle sending a question via the input
+let CurPro="default";
 document.getElementById("submit-btn").addEventListener("click", function() {
     let question = document.getElementById("input").value;
     if (question) {
         // Display the user's question in the output area (for demo purposes)
         document.getElementById("output").innerText = "Processing: " + question;
-        document.getElementById("history-2").innerText = document.getElementById("history-1").innerText
-        document.getElementById("history-1").innerText = question
-        // Here you would normally send the question to the API, e.g., using fetch or axios
-        // Then display the API response in the output area.
+        if(CurPro != "default"){
+            fetch("http://127.0.0.1:5000/pq_update", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name: CurPro, ques: question })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    document.getElementById("history-2").innerText = data.pq1
+                    document.getElementById("history-1").innerText = question
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user details:', error);
+            });
+
+        }
+        else{
+            document.getElementById("history-2").innerText = document.getElementById("history-1").innerText
+            document.getElementById("history-1").innerText = question
+        }
     }
 });
 
@@ -43,6 +66,7 @@ document.getElementById("voice-btn").addEventListener("click", function() {
 });
 
 // Enable Speech-to-Text with double-tab press
+"work on this"
 document.addEventListener("keydown", function(event) {
     if (event.key === "Tab") {
         let doubleTabTimeout = null;
@@ -72,12 +96,79 @@ document.getElementById("new-conversation").addEventListener("click", function()
 // Handle profile selection
 document.getElementById("shlok-profile").addEventListener("click", function() {
     alert("Switched to profile: Shlok Mishra");
-    // Add your logic here for handling Shlok's profile
+    document.getElementById("profile").innerText = "Shlok Mishra";
+    CurPro= "Shlok Mishra";
+    document.getElementById("profile").innerText = "Shlok Mishra";
+    document.getElementById("output").innerText = "";
+    document.getElementById("answer").innerText = "";
+    document.getElementById("input").value = "";
+    document.getElementById("link").innerText = "";
+    document.getElementById("search-1").innerText = "";
+    document.getElementById("search-2").innerText = "";
+    document.getElementById("partition").innerText = "";
+    fetch('http://127.0.0.1:5000/get_user_details', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: 'Shlok Mishra' })
+    })
+    .then(response => {
+        if (!response.ok) {
+            // If response is not ok, throw an error to the catch block
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            document.getElementById("history-2").innerText = data.pq2
+            document.getElementById("history-1").innerText = data.pq1
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching user details:', error);
+    });
 });
 
 document.getElementById("daksh-profile").addEventListener("click", function() {
     alert("Switched to profile: Daksh Mohan");
-    // Add your logic here for handling Daksh's profile
+    document.getElementById("profile").innerText = "Daksh Mohan";
+    CurPro = "Daksh Mohan";
+    document.getElementById("output").innerText = "";
+    document.getElementById("answer").innerText = "";
+    document.getElementById("input").value = "";
+    document.getElementById("link").innerText = "";
+    document.getElementById("search-1").innerText = "";
+    document.getElementById("search-2").innerText = "";
+    document.getElementById("partition").innerText = "";
+    fetch('http://127.0.0.1:5000/get_user_details', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: 'Daksh Mohan' })
+    })
+    .then(response => {
+        if (!response.ok) {
+            // If response is not ok, throw an error to the catch block
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            document.getElementById("history-2").innerText = data.pq2
+            document.getElementById("history-1").innerText = data.pq1
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching user details:', error);
+    });
 });
 // Toggle profile dropdown visibility on click
 document.querySelector(".dropbtn-profile").addEventListener("click", function() {
@@ -192,4 +283,51 @@ document.getElementById("voice-btn").addEventListener("click", function () {
         recognition.start();  // Start listening for speech
     }
 });
+// Function to fetch user details from the server
+/*function fetchUserDetails(name) {
+    fetch('http://127.0.0.1:5000/get_user_details', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: name })
+    })
+    .then(response => {
+        if (!response.ok) {
+            // If response is not ok, throw an error to the catch block
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            updateDashboard(data);
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching user details:', error);
+    });
+}
+
+// Function to update the dashboard with user details
+function updateDashboard(user) {
+    document.querySelector(".left-dashboard").innerHTML = `
+        <h2>${user.name}</h2>
+        <p>Email: ${user.email}</p>
+        <p>Profession: ${user.profession}</p>
+    `;
+}
+
+// Handle profile selection for Shlok Mishra
+document.getElementById("shlok-profile").addEventListener("click", function() {
+    fetchUserDetails("Shlok Mishra");
+});
+
+// Handle profile selection for Daksh Mohan
+document.getElementById("daksh-profile").addEventListener("click", function() {
+    fetchUserDetails("Daksh Mohan");
+});
+*/
 
