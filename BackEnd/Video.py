@@ -7,7 +7,6 @@ API_KEY = 'AIzaSyDBqKo5s-m3S0sOmiZGKUM6Adb2Cy46WH0'
 def youtube_search(query, max_results=5):
     # Build a resource object for interacting with the YouTube API
     youtube = build('youtube', 'v3', developerKey=API_KEY)
-
     # Perform the search
     request = youtube.search().list(
         q=query,
@@ -35,4 +34,4 @@ def youtube_search(query, max_results=5):
 # Example usage:
 if __name__ == "__main__":
     search_term = input("Enter search keyword: ")
-    youtube_search(search_term)
+    print(youtube_search(search_term))

@@ -41,6 +41,46 @@ body {
     cursor: pointer;
 }
 
+/* Profile button styling */
+.profile-btn {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn-profile {
+    background-color: #3e3e3e;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile dropdown content */
+.dropdown-content-profile {
+    display: none;
+    position: absolute;
+    background-color: #3e3e3e;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    border-radius: 8px;
+    right: 0;
+    width: 160px;  /* Adjust width to fit the full name on one line */
+}
+
+.dropdown-content-profile a {
+    color: white;
+    padding: 12px 16px;  /* Adjust padding for better spacing */
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content-profile a:hover {
+    background-color: #575757;
+}
+
 /* Container for layout */
 .container {
     display: flex;
@@ -126,6 +166,7 @@ body {
     border: none;
     padding: 10px 20px;
     font-size: 18px;
+    font-weight: bold;
     border-radius: 25px;
     cursor: pointer;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
@@ -137,11 +178,11 @@ body {
     background-color: #2e2e2e;
     color: darkgray;
     font-size: 20px;
-    padding: 20px;
+    padding: 30px 20px 20px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 30px;
-    min-height: 150px;
+    min-height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,7 +201,7 @@ body {
     width: 100%;
     padding: 10px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: none;
     font-size: 16px;
     background-color: #3e3e3e;
@@ -176,7 +217,7 @@ body {
     padding-top: 20px;
     background-color: #2e2e2e;
     border-radius: 10px;
-    margin-top: 3px;
+    margin-top: 0px;
     margin-bottom: 0px;
     min-height: 100px;
     display: flex;
@@ -194,10 +235,25 @@ body {
     padding-top: 20px;
     background-color: #2e2e2e;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 7px;
     margin-bottom: 0px;
     display: flex;
     align-items: left;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+.article {
+    height: 200px !important;
+    width: 80%;
+    color: gray;
+    padding: 10px;
+    padding-top: 20px;
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    margin-top: 7px;
+    margin-bottom: 0px;
+    display: flex;
     font-size: 18px;
     text-align: left;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
@@ -211,8 +267,8 @@ body {
 #submit-btn {
     background-color: #4caf50;
     color: #fff;
-    padding: 13px;
-margin-bottom: 20px;
+    padding: 11px;
+    margin-bottom: 10px;
     border: none;
     cursor: pointer;
     margin-left: 10px;

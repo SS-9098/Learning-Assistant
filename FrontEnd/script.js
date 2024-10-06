@@ -64,12 +64,42 @@ document.getElementById("new-conversation").addEventListener("click", function()
     document.getElementById("answer").innerText = "";
     document.getElementById("input").value = "";
     document.getElementById("link").innerText = "";
+    document.getElementById("search-1").innerText = "";
+    document.getElementById("search-2").innerText = "";
+    document.getElementById("partition").innerText = "";
 });
 
-// Continue learning logic
-document.getElementById("continue-learning").addEventListener("click", function() {
-    document.getElementById("output").innerText = "Continuing with your learning materials...";
+// Handle profile selection
+document.getElementById("shlok-profile").addEventListener("click", function() {
+    alert("Switched to profile: Shlok Mishra");
+    // Add your logic here for handling Shlok's profile
 });
+
+document.getElementById("daksh-profile").addEventListener("click", function() {
+    alert("Switched to profile: Daksh Mohan");
+    // Add your logic here for handling Daksh's profile
+});
+// Toggle profile dropdown visibility on click
+document.querySelector(".dropbtn-profile").addEventListener("click", function() {
+    const dropdown = document.querySelector(".dropdown-content-profile");
+    // Toggle the display between 'none' and 'block'
+    if (dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+    } else {
+        dropdown.style.display = "block";
+    }
+});
+
+// Close the dropdown if clicked outside of it
+window.addEventListener("click", function(event) {
+    if (!event.target.matches('.dropbtn-profile')) {
+        const dropdown = document.querySelector(".dropdown-content-profile");
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+        }
+    }
+});
+
 document.getElementById("submit-btn").addEventListener("click", function () {
     let question = document.getElementById("input").value;
     
@@ -119,6 +149,32 @@ document.getElementById("submit-btn").addEventListener("click", function () {
             } else if (data.error) {
                 // Display an error message if the backend returns an error
                 document.getElementById("video").innerText = "Error: " + data.error;
+            }
+        })
+        .catch(error => {
+            // Handle any network errors
+            document.getElementById("output").innerText = "Error: " + error.message;
+        });
+        //Fetch article title and link
+        fetch("http://127.0.0.1:5000/search", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ question: question })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.title1) {
+                // Display the answer in the output area
+                document.getElementById("search-1").innerText = data.title1;
+                document.getElementById("search-1").href = data.link1;
+                document.getElementById("partition").innerText = "\u00A0\u00A0||\u00A0\u00A0";
+                document.getElementById("search-2").innerText = data.title2;
+                document.getElementById("search-2").href = data.link2;
+            } else if (data.error) {
+                // Display an error message if the backend returns an error
+                document.getElementById("search-1").innerText = "Error: " + data.error;
             }
         })
         .catch(error => {

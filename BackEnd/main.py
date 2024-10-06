@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-
 import requests
 import Voice
 import Video
+from Search import search_query  # Importing the search_query function from Search.py
 
 app = Flask(__name__)
 CORS(app)
@@ -45,15 +45,35 @@ def ask_question():
     else:
         return jsonify({"error": "No question provided"}), 400
 
+
 @app.route('/voice', methods=['POST'])
 def voice():
     result = Voice.getSpeech().capitalize() + '?'
     return jsonify({'speech': result})
+
+
 @app.route('/video', methods=['POST'])
 def video():
     data = request.json
-    result = Video.youtube_search(data)
+    result = Video.youtube_search(data['question'])
     return jsonify({'name': result[0], 'link': result[1]})
+
+
+@app.route('/search', methods=['POST'])  # New endpoint to handle search queries
+def search():
+    data = request.json
+    if data:
+        # Call the search_query function from Search.py
+        search_results = search_query(data['question'])
+
+        if search_results:
+            return jsonify({'title1': search_results[0]['title'], 'link1': search_results[0]['url'],
+                            'title2': search_results[1]['title'], 'link2': search_results[1]['url']}), 200
+        else:
+            return jsonify({'error': 'No articles found.'}), 404
+    else:
+        return jsonify({'error': 'No search query provided.'}), 400
+
 
 if __name__ == "__main__":
     app.run(debug=True)
