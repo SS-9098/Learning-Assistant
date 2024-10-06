@@ -19,13 +19,18 @@ A voice-activated virtual assistant designed to help students with their homewor
 4. While the backend is running, open the HTML file in the `Frontend` folder in any web browser to start interacting with the assistant.
 
 ## Libraries Used
-1. Flask
-2. pyaudio
-3. SpeechRecognition
-4. Requests
+1. flask
+2. flask_cors
+3. pyaudio
+4. google-api-python-client
+5. SpeechRecognition
+6. requests
+7. db-sqlite3
 
 ## Resources
-- **OpenAI API**: [Cheapest GPT-4 Turbo API](https://rapidapi.com/NextAPI/api/cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api)
+- **OpenAI API**: [GPT-4 Turbo API](https://rapidapi.com/NextAPI/api/cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api)
+- **Web Search API**: [Real-Time Web Search](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-web-search)
+- **Youtube API**: [YouTube Data API v3](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com)
 
 ## Video Link
 - **Drive Link**: https://drive.google.com/file/d/1a56NvAJRJ5Hl-Gbv2ryfCwS5VBa6oLXL/view?usp=drivesdk
