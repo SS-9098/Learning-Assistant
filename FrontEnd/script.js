@@ -64,7 +64,9 @@ document.getElementById("new-conversation").addEventListener("click", function()
     document.getElementById("answer").innerText = "";
     document.getElementById("input").value = "";
     document.getElementById("link").innerText = "";
-    document.getElementById("search").innerText = "";
+    document.getElementById("search-1").innerText = "";
+    document.getElementById("search-2").innerText = "";
+    document.getElementById("partition").innerText = "";
 });
 
 // Handle profile selection
@@ -163,13 +165,16 @@ document.getElementById("submit-btn").addEventListener("click", function () {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.title) {
+            if (data.title1) {
                 // Display the answer in the output area
-                document.getElementById("search").innerText = " " + data.title;
-                document.getElementById("search").href = data.link;
+                document.getElementById("search-1").innerText = data.title1;
+                document.getElementById("search-1").href = data.link1;
+                document.getElementById("partition").innerText = "\u00A0\u00A0||\u00A0\u00A0";
+                document.getElementById("search-2").innerText = data.title2;
+                document.getElementById("search-2").href = data.link2;
             } else if (data.error) {
                 // Display an error message if the backend returns an error
-                document.getElementById("search").innerText = "Error: " + data.error;
+                document.getElementById("search-1").innerText = "Error: " + data.error;
             }
         })
         .catch(error => {

@@ -67,7 +67,8 @@ def search():
         search_results = search_query(data['question'])
 
         if search_results:
-            return jsonify({'title': search_results[0]['title'], 'link': search_results[0]['url']}), 200
+            return jsonify({'title1': search_results[0]['title'], 'link1': search_results[0]['url'],
+                            'title2': search_results[1]['title'], 'link2': search_results[1]['url']}), 200
         else:
             return jsonify({'error': 'No articles found.'}), 404
     else:
