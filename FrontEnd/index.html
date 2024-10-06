@@ -8,13 +8,16 @@
 </head>
 <body>
     <!-- Top bar with website name and profile button -->
-    <div class="top-bar">
+   <div class="top-bar">
         <div class="logo">StudyBuddy</div>
         <div class="profile-btn">
-            <a>Profile</a>
-            <i></i>
+           <button class="dropbtn-profile">Profile</button>
+           <div class="dropdown-content-profile" id="profile-options">
+              <a id="shlok-profile">Shlok Mishra</a>
+              <a id="daksh-profile">Daksh Mohan</a>
+           </div>
         </div>
-    </div>
+        </div>
 
     <div class="container">
         <!-- Sidebar with dropdowns and new buttons -->
@@ -46,7 +49,7 @@
         <!-- Main content area -->
         <div class="main">
             <!-- Voice button -->
-            <button class="voice-btn" id="voice-btn">🎤 Speak</button>
+            <button class="voice-btn" id="voice-btn">SPEAK</button>
 
             <!-- Output area (Answer display) -->
             <div id="output" class="output">
@@ -59,6 +62,10 @@
             </div>
 	        <div id="answer" class="answer">
                 <!-- The answer will be displayed here -->
+            </div>
+            <div id="article" class="article">
+                <a>Article: </a>
+                <a id="search" href="" target="_blank" aria-placeholder="Article Here" class="txt"></a>
             </div>
             <div id="video" class="video">
                 <a>Video: </a>

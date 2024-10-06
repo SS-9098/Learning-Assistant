@@ -55,21 +55,19 @@ def voice():
 @app.route('/video', methods=['POST'])
 def video():
     data = request.json
-    result = Video.youtube_search(data)
+    result = Video.youtube_search(data['question'])
     return jsonify({'name': result[0], 'link': result[1]})
 
 
 @app.route('/search', methods=['POST'])  # New endpoint to handle search queries
 def search():
     data = request.json
-    query = data.get('query', '')  # Get the search query from the frontend
-
-    if query:
+    if data:
         # Call the search_query function from Search.py
-        search_results = search_query(query)
+        search_results = search_query(data['question'])
 
         if search_results:
-            return jsonify({'results': search_results}), 200
+            return jsonify({'title': search_results[0]['title'], 'link': search_results[0]['url']}), 200
         else:
             return jsonify({'error': 'No articles found.'}), 404
     else:
