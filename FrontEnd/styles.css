@@ -230,7 +230,8 @@ body {
 .video {
     height: 200px !important;
     width: 80%;
-    color: white;
+    color: gray;
+    font-weight: bold;
     padding: 10px;
     padding-top: 20px;
     background-color: #2e2e2e;
@@ -246,7 +247,8 @@ body {
 .article {
     height: 200px !important;
     width: 80%;
-    color: white;
+    color: gray;
+    font-weight: bold;
     padding: 10px;
     padding-top: 20px;
     background-color: #2e2e2e;
