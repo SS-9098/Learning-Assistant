@@ -9,7 +9,7 @@ def search_query(query):
     querystring = {"q": query, "limit": "2"}  # Using the passed query as input
 
     headers = {
-        "x-rapidapi-key": "2c791c4302msh188fc620d2fccf4p1a4445jsn40de27192e13",  # Replace with your actual API key
+        "x-rapidapi-key": "129f14a6famsh22282ee9f5122a2p14e6bcjsn6f2761a1d1b3",  # Replace with your actual API key
         "x-rapidapi-host": "real-time-web-search.p.rapidapi.com"
     }
 

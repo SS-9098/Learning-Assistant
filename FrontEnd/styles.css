@@ -176,7 +176,7 @@ body {
 .output {
     width: 80%;
     background-color: #2e2e2e;
-    color: darkgray;
+    color: white;
     font-size: 20px;
     padding: 30px 20px 20px;
     border-radius: 10px;
@@ -212,7 +212,7 @@ body {
 .answer {
     height: 1700px;
     width: 80%;
-    color: gray;
+    color: white;
     padding: 10px;
     padding-top: 20px;
     background-color: #2e2e2e;
@@ -230,7 +230,7 @@ body {
 .video {
     height: 200px !important;
     width: 80%;
-    color: gray;
+    color: white;
     padding: 10px;
     padding-top: 20px;
     background-color: #2e2e2e;
@@ -246,7 +246,7 @@ body {
 .article {
     height: 200px !important;
     width: 80%;
-    color: gray;
+    color: white;
     padding: 10px;
     padding-top: 20px;
     background-color: #2e2e2e;

@@ -106,6 +106,10 @@ document.getElementById("shlok-profile").addEventListener("click", function() {
     document.getElementById("search-1").innerText = "";
     document.getElementById("search-2").innerText = "";
     document.getElementById("partition").innerText = "";
+    document.getElementById("suggest-2").innerText = "Python Tutorial";
+    document.getElementById("suggest-1").innerText = "Binomial Theorem";
+    document.getElementById("suggest-2").href = "https://www.tutorialspoint.com/python/index.htm";
+    document.getElementById("suggest-1").href = "https://byjus.com/jee/binomial-theorem/";
     fetch('http://127.0.0.1:5000/get_user_details', {
         method: 'POST',
         headers: {
@@ -144,6 +148,10 @@ document.getElementById("daksh-profile").addEventListener("click", function() {
     document.getElementById("search-1").innerText = "";
     document.getElementById("search-2").innerText = "";
     document.getElementById("partition").innerText = "";
+    document.getElementById("suggest-2").innerText = "Anatomy";
+    document.getElementById("suggest-1").innerText = "Metabolism";
+    document.getElementById("suggest-2").href = "https://www.britannica.com/science/anatomy";
+    document.getElementById("suggest-1").href = "https://en.wikipedia.org/wiki/Metabolism";
     fetch('http://127.0.0.1:5000/get_user_details', {
         method: 'POST',
         headers: {
