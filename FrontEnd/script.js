@@ -22,15 +22,15 @@ document.getElementById("submit-btn").addEventListener("click", function() {
     .then(data => {
         if (data.interestResponse) {
             // Display the interest response from the backend
-            document.getElementById("interest").innerText = data.interestResponse;
+            document.getElementById("output").innerText = data.interestResponse;
         } else if (data.error) {
             // Display an error message if the backend returns an error
-            document.getElementById("output").innerText = "Error: " + data.error;
+            document.getElementById("output").innerText = "Error:";
         }
     })
     .catch(error => {
         // Handle any network errors
-        document.getElementById("output").innerText = "Error: " + error.message;
+        document.getElementById("output").innerText = "Error: ";
     });
 
         if(CurPro != "default"){

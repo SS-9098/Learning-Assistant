@@ -44,9 +44,9 @@ def interest_checker(result, user_name):
     # Loop through the interests and match against the result field
     for row in user_interests:
         interest_value = row['interest']
-        print(result['field'])
+        print(result['field'],"ju")
         # Access the 'interest' column value
-        print(interest_value)
+        print(interest_value,"hu")
         if result['field'].lower() == interest_value.lower():
             return result['field']
 
@@ -115,7 +115,7 @@ def upd():
 # Define the URL and headers for GPT-4 API
 url = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions"
 headers = {
-    "X-RapidAPI-Key": "4c7c959ed8msh9ce6b3a18b16faap1deb54jsn33aa8f0eb27e",  # Replace with your actual API key
+    "X-RapidAPI-Key": "129f14a6famsh22282ee9f5122a2p14e6bcjsn6f2761a1d1b3",  # Replace with your actual API key
     "Content-Type": "application/json"
 }
 
@@ -162,9 +162,9 @@ def input_classifier():
         # Check user interests based on the classified result
         interest_response = interest_checker(classified_result, user_name)
         print(interest_response)
-        return jsonify({"interestResponse": interest_response }), 200
+        return jsonify({"interestResponse": interest_response}), 200
 
-    return jsonify({"error": "Could not classify the input or find related interests."}), 200
+    return jsonify({"error": "Could not classify the input or find related interests."}), 404
 
         # interest_response = None
 
