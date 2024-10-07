@@ -33,7 +33,8 @@ A voice-activated virtual assistant designed to help students with their homewor
 - **Youtube API**: [YouTube Data API v3](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com)
 
 ## Video Link
-- **Drive Link**: https://drive.google.com/file/d/1a56NvAJRJ5Hl-Gbv2ryfCwS5VBa6oLXL/view?usp=drivesdk
+- [**Second Stage Prototype**](https://drive.google.com/file/d/1a56NvAJRJ5Hl-Gbv2ryfCwS5VBa6oLXL/view?usp=drivesdk)
+- [**Final Presentation Prototype**](https://drive.google.com/file/d/1z7i7PQKGk92d9DBipBvB11aoZeMbSkL7/view?usp=drivesdk)
 
 
 
