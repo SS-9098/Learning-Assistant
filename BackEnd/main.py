@@ -29,7 +29,6 @@ def get_user_details():
     user = conn.execute("SELECT * FROM students WHERE lower(name) = lower(?)", (user_name,)).fetchone()
     conn.close()
     if user is None:
-        print("uiyhi")
         return jsonify({"error": "User not found"}), 404
 
     user_details = {
@@ -52,7 +51,6 @@ def upd():
     user = conn.execute("SELECT * FROM students WHERE lower(name) = lower(?)", (user_name,)).fetchone()
 
     if user is None:
-        print("uiyhi")
         return jsonify({"error": "User not found"}), 404
 
     user_details = {

@@ -33,6 +33,12 @@ document.getElementById("submit-btn").addEventListener("click", function() {
         }
     }
 });
+document.addEventListener("keypress", function(e) {
+    if(e.key == 'Enter'){
+        document.getElementById("submit-btn").click();
+    }
+});
+
 
 document.getElementById("history-1").addEventListener("click", function() {
     document.getElementById("input").value = document.getElementById("history-1").innerText;
