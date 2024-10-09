@@ -71,22 +71,6 @@ document.getElementById("voice-btn").addEventListener("click", function() {
         })
 });
 
-// Enable Speech-to-Text with double-tab press
-"work on this"
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Tab") {
-        let doubleTabTimeout = null;
-        if (!doubleTabTimeout) {
-            doubleTabTimeout = setTimeout(function() {
-                doubleTabTimeout = null; // Reset double tab detection
-            }, 300); // 300ms for double tab
-        } else {
-            document.getElementById("output").innerText = "Speech-to-Text Activated!";
-            clearTimeout(doubleTabTimeout);
-            doubleTabTimeout = null; // Reset for next double tab
-        }
-    }
-});
 
 // New conversation button logic
 document.getElementById("new-conversation").addEventListener("click", function() {
@@ -297,51 +281,3 @@ document.getElementById("voice-btn").addEventListener("click", function () {
         recognition.start();  // Start listening for speech
     }
 });
-// Function to fetch user details from the server
-/*function fetchUserDetails(name) {
-    fetch('http://127.0.0.1:5000/get_user_details', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ name: name })
-    })
-    .then(response => {
-        if (!response.ok) {
-            // If response is not ok, throw an error to the catch block
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.error) {
-            alert(data.error);
-        } else {
-            updateDashboard(data);
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching user details:', error);
-    });
-}
-
-// Function to update the dashboard with user details
-function updateDashboard(user) {
-    document.querySelector(".left-dashboard").innerHTML = `
-        <h2>${user.name}</h2>
-        <p>Email: ${user.email}</p>
-        <p>Profession: ${user.profession}</p>
-    `;
-}
-
-// Handle profile selection for Shlok Mishra
-document.getElementById("shlok-profile").addEventListener("click", function() {
-    fetchUserDetails("Shlok Mishra");
-});
-
-// Handle profile selection for Daksh Mohan
-document.getElementById("daksh-profile").addEventListener("click", function() {
-    fetchUserDetails("Daksh Mohan");
-});
-*/
-

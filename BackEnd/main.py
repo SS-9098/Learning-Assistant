@@ -4,8 +4,7 @@ import sqlite3
 import requests
 import Voice
 import Video
-from Search import search_query  # Importing the search_query function from Search.py
-from sqlitin import pqUpd
+from Search import search_query
 
 app = Flask(__name__)
 CORS(app)

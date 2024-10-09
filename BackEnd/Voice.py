@@ -12,4 +12,4 @@ def getSpeech():
        try:   # using google speech recognition
         return r.recognize_google(audio)
        except:
-        return ("Sorry, I did not get that")
+        return "Sorry, I did not get that"
