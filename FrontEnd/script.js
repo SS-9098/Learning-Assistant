@@ -1,5 +1,6 @@
 // Handle sending a question via the input
 let CurPro="default";
+
 document.getElementById("submit-btn").addEventListener("click", function() {
     let question = document.getElementById("input").value;
     if (question) {
@@ -39,13 +40,14 @@ document.addEventListener("keypress", function(e) {
     }
 });
 
-
+//Updates History in 'Previously Asked Questions' tab
 document.getElementById("history-1").addEventListener("click", function() {
     document.getElementById("input").value = document.getElementById("history-1").innerText;
 });
 document.getElementById("history-2").addEventListener("click", function() {
     document.getElementById("input").value = document.getElementById("history-2").innerText;
 });
+
 // Voice button - For demo, it will print "Listening..."
 document.getElementById("voice-btn").addEventListener("click", function() {
 
@@ -70,7 +72,6 @@ document.getElementById("voice-btn").addEventListener("click", function() {
             }
         })
 });
-
 
 // New conversation button logic
 document.getElementById("new-conversation").addEventListener("click", function() {
@@ -270,14 +271,5 @@ document.getElementById("submit-btn").addEventListener("click", function () {
             // Handle any network errors
             document.getElementById("output").innerText = "Error: " + error.message;
         });
-    }
-});
-
-// Check if the browser supports speech recognition
-
-// Add event listener for the voice button
-document.getElementById("voice-btn").addEventListener("click", function () {
-    if (recognition) {
-        recognition.start();  // Start listening for speech
     }
 });
