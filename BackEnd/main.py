@@ -1,14 +1,15 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import webbrowser
 import sqlite3
 import requests
 import Voice
 import Video
+import os
 from Search import search_query
 
 app = Flask(__name__)
 CORS(app)
-
 # app = Flask(__name__)
 
 # SQLite connection
@@ -134,4 +135,5 @@ def search():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    webbrowser.open_new_tab(f'file://{os.getcwd()}\index.html'.replace('BackEnd', 'FrontEnd'))
+    app.run(debug=False)
