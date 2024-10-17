@@ -16,7 +16,7 @@ A voice-activated virtual assistant designed to help students with their homewor
     ```bash
     python main.py
     ```
-4. While the backend is running, open the HTML file in the `Frontend` folder in any web browser to start interacting with the assistant.
+    or directly run the ```main.py``` file from your IDE
 
 ## Libraries Used
 1. flask
