@@ -135,5 +135,5 @@ def search():
 
 
 if __name__ == "__main__":
-    webbrowser.open_new_tab(f'file://{os.getcwd()}\index.html'.replace('BackEnd', 'FrontEnd'))
+    webbrowser.open_new_tab(f'file://{os.getcwd()}/FrontEnd/index.html'.replace('BackEnd', ''))
     app.run(debug=False)
