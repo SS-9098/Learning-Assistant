@@ -1,7 +1,9 @@
+import os
+
 from googleapiclient.discovery import build
 
 # Replace with your YouTube Data API key
-API_KEY = 'AIzaSyDBqKo5s-m3S0sOmiZGKUM6Adb2Cy46WH0'
+API_KEY = os.getenv('GOOGLE_API_KEY')
 
 
 def youtube_search(query, max_results=5):
