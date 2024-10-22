@@ -6,7 +6,7 @@ document.getElementById("submit-btn").addEventListener("click", function() {
     if (question) {
         // Display the user's question in the output area (for demo purposes)
         document.getElementById("output").innerText = "Processing: " + question;
-        if(CurPro != "default"){
+        if(CurPro !== "default"){
             fetch("http://127.0.0.1:5000/pq_update", {
                 method: "POST",
                 headers: {
@@ -35,7 +35,7 @@ document.getElementById("submit-btn").addEventListener("click", function() {
     }
 });
 document.addEventListener("keypress", function(e) {
-    if(e.key == 'Enter'){
+    if(e.key === 'Enter'){
         document.getElementById("submit-btn").click();
     }
 });
@@ -90,13 +90,7 @@ document.getElementById("shlok-profile").addEventListener("click", function() {
     document.getElementById("profile").innerText = "Shlok Mishra";
     CurPro= "Shlok Mishra";
     document.getElementById("profile").innerText = "Shlok Mishra";
-    document.getElementById("output").innerText = "";
-    document.getElementById("answer").innerText = "";
-    document.getElementById("input").value = "";
-    document.getElementById("link").innerText = "";
-    document.getElementById("search-1").innerText = "";
-    document.getElementById("search-2").innerText = "";
-    document.getElementById("partition").innerText = "";
+    document.getElementById("new-conversation").click();
     document.getElementById("suggest-2").innerText = "Python Tutorial";
     document.getElementById("suggest-1").innerText = "Binomial Theorem";
     document.getElementById("suggest-2").href = "https://www.tutorialspoint.com/python/index.htm";
@@ -132,13 +126,7 @@ document.getElementById("daksh-profile").addEventListener("click", function() {
     alert("Switched to profile: Daksh Mohan");
     document.getElementById("profile").innerText = "Daksh Mohan";
     CurPro = "Daksh Mohan";
-    document.getElementById("output").innerText = "";
-    document.getElementById("answer").innerText = "";
-    document.getElementById("input").value = "";
-    document.getElementById("link").innerText = "";
-    document.getElementById("search-1").innerText = "";
-    document.getElementById("search-2").innerText = "";
-    document.getElementById("partition").innerText = "";
+    document.getElementById("new-conversation").click();
     document.getElementById("suggest-2").innerText = "Anatomy";
     document.getElementById("suggest-1").innerText = "Metabolism";
     document.getElementById("suggest-2").href = "https://www.britannica.com/science/anatomy";
