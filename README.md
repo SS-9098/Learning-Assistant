@@ -11,13 +11,13 @@ A voice-activated virtual assistant designed to help students with their homewor
 ## How To Use
 
 1. Clone this repository to your local machine.
-2. Install the necessary Python libraries (listed below).
-3. Run the following command in your terminal to start the backend:
+2. Install the necessary Python libraries-   
+   Run the following command in your terminal:
    
     ```bash
-    python main.py
+    pip install -r requirements.txt
     ```
-    or directly run ```main.py``` file from your IDE
+3. Run ```main.py``` file.
 
 ## Libraries Used
 1. flask
