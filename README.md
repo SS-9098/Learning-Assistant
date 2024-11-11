@@ -33,11 +33,6 @@ A voice-activated virtual assistant designed to help students with their homewor
 - **Web Search API**: [Real-Time Web Search](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-web-search)
 - **YouTube API**: [YouTube Data API v3](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com)
 
-## Video Link
-- [**Second Stage Prototype**](https://drive.google.com/file/d/1a56NvAJRJ5Hl-Gbv2ryfCwS5VBa6oLXL/view?usp=drivesdk)
-- [**Final Presentation Prototype**](https://drive.google.com/file/d/1z7i7PQKGk92d9DBipBvB11aoZeMbSkL7/view?usp=drivesdk)
-
-
 
 
 
