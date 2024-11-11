@@ -11,7 +11,7 @@ A voice-activated virtual assistant designed to help students with their homewor
 ## How To Use
 
 1. Clone this repository to your local machine.
-2. Install the necessary Python libraries-   
+2. Install the necessary Python libraries:-    
    Run the following command in your terminal:
    
     ```bash
@@ -20,18 +20,18 @@ A voice-activated virtual assistant designed to help students with their homewor
 3. Run ```main.py``` file.
 
 ## Libraries Used
-1. flask
-2. flask_cors
-3. pyaudio
-4. google-api-python-client
-5. SpeechRecognition
-6. requests
-7. db-sqlite3
+- Flask
+- Flask_CORS
+- PyAudio
+- Google-API-Python-Client
+- SpeechRecognition
+- Requests
+- DB-SQLite3
 
 ## Resources
 - **OpenAI API**: [GPT-4 Turbo API](https://rapidapi.com/NextAPI/api/cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api)
 - **Web Search API**: [Real-Time Web Search](https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-web-search)
-- **Youtube API**: [YouTube Data API v3](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com)
+- **YouTube API**: [YouTube Data API v3](https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com)
 
 ## Video Link
 - [**Second Stage Prototype**](https://drive.google.com/file/d/1a56NvAJRJ5Hl-Gbv2ryfCwS5VBa6oLXL/view?usp=drivesdk)
