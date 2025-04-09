@@ -136,4 +136,4 @@ def search():
 
 if __name__ == "__main__":
     webbrowser.open_new_tab(f'file://{os.getcwd()}/FrontEnd/index.html'.replace('BackEnd', ''))
-    app.run(debug=False)
+    app.run(debug=False, port=10000)
