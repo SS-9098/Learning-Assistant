@@ -1,5 +1,6 @@
 // Handle sending a question via the input
 let CurPro="default";
+const serverURL = "https://learning-assistant-dd40.onrender.com";
 
 document.getElementById("submit-btn").addEventListener("click", function() {
     let question = document.getElementById("input").value;
@@ -7,7 +8,7 @@ document.getElementById("submit-btn").addEventListener("click", function() {
         // Display the user's question in the output area (for demo purposes)
         document.getElementById("output").innerText = "Processing: " + question;
         if(CurPro !== "default"){
-            fetch("http://127.0.0.1:5000/pq_update", {
+            fetch(serverURL+"/pq_update", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -53,7 +54,7 @@ document.getElementById("voice-btn").addEventListener("click", function() {
 
     
     // You can integrate a speech recognition API here (like Web Speech API)
-    fetch("http://127.0.0.1:5000/voice", {
+    fetch(serverURL+"/voice", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -186,7 +187,7 @@ document.getElementById("submit-btn").addEventListener("click", function () {
         document.getElementById("output").innerText = "Processing: " + question;
 
         // Send the question to the Flask backend
-        fetch("http://127.0.0.1:5000/ask", {
+        fetch(serverURL+"/ask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -211,7 +212,7 @@ document.getElementById("submit-btn").addEventListener("click", function () {
         });
 
         //Get video link and name
-        fetch("http://127.0.0.1:5000/video", {
+        fetch(serverURL+"/video", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -234,7 +235,7 @@ document.getElementById("submit-btn").addEventListener("click", function () {
             document.getElementById("output").innerText = "Error: " + error.message;
         });
         //Fetch article title and link
-        fetch("http://127.0.0.1:5000/search", {
+        fetch(serverURL+"/search", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
