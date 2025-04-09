@@ -114,8 +114,9 @@ def voice():
 @app.route('/video', methods=['POST'])
 def video():
     data = request.json
-    result = Video.youtube_search(data['question'])
-    return jsonify({'name': result[0], 'link': result[1]})
+    # result = Video.youtube_search(data['question'])
+    # return jsonify({'name': result[0], 'link': result[1]})
+    return jsonify({'name': "Video Service temporarily disabled", 'link': "https://easy-peasy.ai/templates/apology-generator"})
 
 
 @app.route('/search', methods=['POST'])  # New endpoint to handle search queries
